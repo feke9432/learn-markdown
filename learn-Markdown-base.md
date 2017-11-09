@@ -170,7 +170,7 @@ you've got to put paragraph tags in your blockquotes:
 
 [eva]:./static//timg.gif "eva"
 
-## 直接使用 html 语法美化文章。
+## 直接使用 html 语法美化文章（部分不支持：github）。
 <style>
     .footer {
         background: white;
@@ -183,9 +183,3 @@ you've got to put paragraph tags in your blockquotes:
 <div class="footer" id="foot">
    © 2004 Foo Corporation
 </div>
-<script>
-    var foot = document.getElementById('foot')
-    foot.onclick = function () {
-        alert('you clicked footer');
-    }
-</script>
