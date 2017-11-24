@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>html 基础复习</title>
+    </head>
+    <body>
+        <article>
+            <header>
+                <h1>HTML 基础复习</h1>
+            </header>
+            <article>
+                <section>
+                    <h2>一，HTML 属性表</h2>
+                    <ul>
+                        <li>
+                            <label>1.accesskey: 指定元素快捷键 => </label>
+                            <input accesskey="k" value="试试按 alt + k"></input>
+                        </li>
+                        <li>
+                            <label>2.class: 类选择器 => 多项空格分隔</label>
+                            <p>document.getElementByClassName => Array</p>
+                        </li>
+                        <li>
+                            <label>3.contetneditable (HTML5): 枚举属性 => 必须是 true 或 false </label>
+                            <p contenteditable="true">设置这个 p 标签为 true，有么有发现这个 p 标签达成文本域的效果
+                                <br />
+                                这个属性还支持富文本，试试复制网页标签进来了
+                            </p>
+                            <p>
+                                你同样可以使用 CSS3 user-modify 属性达成相同效果<br />
+                                可选的值
+                                <ol>
+                                    <li>read-only: 只读</li>
+                                    <li>read-write: 读写，支持富文本</li>
+                                    <li>read-write-plaintext-only: 读写，但只能输入纯文本</li>
+                                </ol>
+                                想了解更多<a href="http://www.zhangxinxu.com/wordpress/2016/01/contenteditable-plaintext-only/">点击这里</a>
+                            </p>
+                        </li>
+                        <li>
+                            <label>4.data-* (HTML5): 自定义数据属性 => </label>
+                            <p>属性名定义有如下限制：
+                                <ul>
+                                    <li>该名称不能以 xml 开头，</li>
+                                    <li>不能含任何分号</li>
+                                    <li>不能包含A到Z的大写字母</li>
+                                </ul>
+                                命名的属性可通过 HTMLElement.dataset 访问
+                                例如：<br />
+                                一个 span 标签：<span id="dataObj" data-obj="{name: 'span'}">我存了一个自定义属性 data-obj</span><br />
+                                在浏览器 console 输入试试 document.getElementById('dataObj').dataset.obj
+                            </p>
+                        </li>
+                    </ul>
+
+                </section>
+            </article>
+        </article>
+
+        <p align="top">这是一个居中的段落=> ‘align="center"’</p>
+    </body>
+</html>
