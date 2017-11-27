@@ -37,7 +37,7 @@
                                     <li>read-write: 读写，支持富文本</li>
                                     <li>read-write-plaintext-only: 读写，但只能输入纯文本</li>
                                 </ol>
-                                想了解更多<a href="http://www.zhangxinxu.com/wordpress/2016/01/contenteditable-plaintext-only/">点击这里</a>
+                                想了解更多<a tabindex="-1" href="http://www.zhangxinxu.com/wordpress/2016/01/contenteditable-plaintext-only/">点击这里</a>
                             </p>
                         </li>
                         <li>
@@ -54,12 +54,71 @@
                                 在浏览器 console 输入试试 document.getElementById('dataObj').dataset.obj
                             </p>
                         </li>
+                        <li>
+                            <label>5.dir : 获取或设置当前元素内容的文本书写方向</label>
+                            <p>
+                                可选值：
+                                <ol>
+                                    <li dir="ltr">ltr</li>
+                                    <li >rtl</li>
+                                    <li dir="auto">auto</li>
+                                </ol>
+                            </p>
+                        </li>
+                        <li>
+                            <label for="">6.draggabel (HTML5): 标记元素是否允许拖放api操作 => ie 9 +</label>
+                            <p >默认情况下，只有已选中的文本、图片、链接可以拖动，<br />你也可以设置元素拖动流程完成拖动
+                                <ol>
+                                    <li>设置元素 draggable 属性为 true =><br> draggable="true"</li>
+                                    <li>设置 ondragstart 属性以事件，或者添加事件监听 => <br> e.dataTransfer.setData('text/plain', '你敢托我')</li>
+                                </ol>
+                            </p>
+                            <div id="dragDemo" draggable="true" >
+                                拖动我试试
+                            </div>
+                        </li>
+                        <li>
+                            <label>7.dropzone (HTML5: 不可用): 属性规定在元素上拖动数据时，是否拷贝、移动或链接被拖动数据。</label>
+                            <p dropzone="copy">暂时所有浏览器都不可用</p>
+                        </li>
+                        <li>
+                            <label for="">8.hidden (ie 11 +): 隐藏元素</label>
+                            <p>使用hidden 隐藏的元素会被 css：display 属性覆盖行为，你说鸡肋不鸡肋</p>
+                            <p hidden="true" style="display: block;">这是一个隐藏元素,但设置了 display: block；所以显示了</p>
+                        </li>
+                        <li>
+                            <label for="">9.id : 元素唯一标示名</label>
+                            <p id="haha">一般用于元素选择器，也可以使用 a 标签查找页面，必须使用字母开头</p>
+                        </li>
+                        <li>
+                            <label for="">10.lang: 规定元素语言的定义</label>
+                            <p></p>
+                        </li>
+                        <li>
+                            <label for="">11.style: 规定元素的样式</label>
+                            <p>行内样式，不推荐</p>
+                        </li>
+                        <li>
+                            <label for="">12.tabindex: 标示元素是否可以聚焦，或聚焦优先度</label>
+                            <p>可选值：<br>
+                                <ol>
+                                    <li tabindex="1">= -1 , 标示不能用键盘导航聚焦，</li>
+                                    <li tabindex="2">= 0 ， 标示可以聚焦，相对顺序按照dom 结构确定</li>
+                                    <li tabindex="3">= 1 ， 标示可以聚焦，并从1开始顺序聚焦</li>
+                                </ol>
+                            </p>
+                        </li>
                     </ul>
 
                 </section>
             </article>
         </article>
-
-        <p align="top">这是一个居中的段落=> ‘align="center"’</p>
+        <script>
+            var dragDemo = document.getElementById('dragDemo');
+            dragDemo.addEventListener('dragstart', function (e) {
+                console.log('你托我');
+                e.dataTransfer.setData('text/plain', 'ss')
+            });
+        </script>
     </body>
 </html>
