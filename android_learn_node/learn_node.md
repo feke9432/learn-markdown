@@ -34,3 +34,63 @@ app > res > layout > active_main.xml(或者其他名字，这里暂时只有一�
 app > java > com.anddle.你的项目名 > MainActivity
 ![](./onclick.png)
 中添加事件，在类 MainActivity 中添加公用返回值为空的事件 onClick ,传入一个参数（View view）,这里以以后的参数注意 Alt + Enter 引入引用，onClick 函数教程中采用了 switch case 判断用户点击的按钮的 id 的方式执行事件。这里遇到一个愚蠢的问题，之前遇到不管点哪个按钮都弹出错误的提示，判断是 switch 直接执行最后一个事件，然后发现没有给 case 里的语句块添加 break; 弹出的过。。。
+
+然后 debug 编译打包后我第一个很傻的应用就完成了，大部分代码都是照着抄，但毕竟有前端的底子，xml 语法看起来让人联想很多。之后进入具体的基础学习阶段。
+
+## 二，基础学习
+
+> 1.[资料](http://www.runoob.com/w3cnote/android-tutorial-relativelayout.html)
+
+### 2.0 Android 中的布局：
+    * LinearLayout(线性布局)
+    * RelativeLayout(相对布局)
+    * TableLayout(表格布局)
+    * FrameLayout(帧布局)
+    * AbsoluteLayout(绝对布局)
+    * GridLayout(网格布局)
+
+### 2.1 LinearLayout 线性布局
+
+线性布局比较适合屏幕适配，用的比较多的属性就是 weight （权重属性：此属性安卓会自己计算视图块的大小），其他属性见下图：
+![](./LinearLayout.jpg)
+
+### 2.2 RelativeLayout 相对布局
+
+当界面比较复杂的时候，需要嵌套多层的 LinearLayout,这样就会降低UI Render的效率(渲染速度),而且如果是listview或者GridView上的 item,效率会更低,另外太多层LinearLayout嵌套会占用更多的系统资源,还有可能引发stackoverflow（堆栈溢出）;
+所以：**尽量使用RelativeLayout + LinearLayout的weight属性搭配使用吧**
+![](./RelativeLayout.png)
+
+#### 2.2.1 父容器定位属性示意图
+![](./RLParentBox.jpg)
+
+### 2.2.2 兄弟组件定位
+
+和前端html布局很类似，同一父组件的子组件之间就是兄弟组件，但实际效果直接用属性体现出来
+```
+<SomeView
+    ...
+    android:id="@+id/id1"                 // 组件单独id后面会用作判断
+    android:layout_centerInParent="true"  // 处于父组件中央位置
+    ...
+    />
+
+<BrotherLeft
+    ...
+    android:layout_toLeftOf="@id/id1"     // 靠到 id1 组件的左边
+    android:layout_centerVertical="true"  // 垂直方向居中
+    ...
+    />
+
+<BrotherRight
+    ...
+    android:layout_toRightOf="@id/id1"     // 靠到 id1 组件的右边
+    android:layout_centerVertical="true"   // 垂直方向居中
+    ...
+    />
+<BrotherTop
+    ...
+    android:layout_above="@id/id1"        // 靠到 id1 组件的上面
+    android:layout_centerVertical="true"  // 垂直方向居中
+    ...
+    />
+```
