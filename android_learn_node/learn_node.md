@@ -94,3 +94,41 @@ app > java > com.anddle.你的项目名 > MainActivity
     ...
     />
 ```
+
+### 2.2.3 margin与padding
+
+这与前端中的盒模型看似相似，但其实完全不同。
+
+#### margin 
+
+在相对布局中，使用margin时会把组件挤开，但当组件被顶到视图边界时，与浏览器直接顶出
+视图外不同，他会让元素等被压的方向等比缩小组件。margin是可以给负数达成类似css定位的效果。
+
+#### padding 
+
+padding 则更不同，直接使用 padding 时，各方向按给的数值填充组件，
+如果给的是 paddingLeft ,那不仅左边会发生“填充”，上下两边，或者说，
+相邻的两边会同样按一定数值发生填充。
+
+## 2.3 Tablelayout 表格布局
+
+#### 2.3.1 如何确定行数与列数
+
+> 1. 如果我们直接往TableLayout中添加组件的话，那么这个组件将沾满一行
+> 2. 如果我们想一行上有多个组件的话，就要添加以TableRow的容器，把组件都丢在里面
+> 3. TableRow 中的组件个数就决定了该有多少列，而列的宽度由该列中最宽的单元格决定
+> 4. TableRow 的 layout\_width 属性，默认是 fill\_parent,自己改不了，但layout\_height默认是
+    wrapten\_content ,我们可以改
+> 5. 整个表格的宽度取决于父容器的宽度（占满）
+> 6. 有多少行就要自己数了，一个tablerow一行，一个单独组件一行，多少列看tableRow中的组件个数，按最多一个为标准。 
+
+#### 2.3.2 几个常用属性
+
+> 1. android:collapseColumns: 设置需要__被隐藏__的列的序号
+> 2. android:shrinkColumns: 设置允许__被收缩__的序列号
+> 3. android:stretchColumns: 设置运行__被拉伸__的列的列序号
+
+这三个属性都是从0开始计算的，可设置多个，用逗号隔开，也可设置*全选
+
+> 4. android:layout_column: 标示跳过某个格子，从1开始计数
+> 5. android:layout_span: 合并单元格
