@@ -54,6 +54,18 @@ app > java > com.anddle.你的项目名 > MainActivity
 线性布局比较适合屏幕适配，用的比较多的属性就是 weight （权重属性：此属性安卓会自己计算视图块的大小），其他属性见下图：
 ![](./LinearLayout.jpg)
 
+常用属性表：
+1. orentation: 布局中组件的排列方式，horizontal（水平）vertical(竖直，默认)
+2. grayity： 组件所包含的子元素的对齐方式，可多个组合，入（left|buttom）
+3. layout_gravity: 控制该组件在父容器里的对其方式
+4. layout_width: 布局的宽度，通常不直接写数字的，用 wrap\_content(组件的实际大小),fill\_parent或者match\_parent(填满父容器)
+5. layout_height: 布局的高度，参数同上
+6. id： 为组件设置一个资源id，在 java 文件中可以通过findViewById(id)找到该组件
+7. background：为组件设置一个背景图片，或者直接用颜色覆盖
+
+weight (权重) 属性详解：
+1. 如果使用 将
+
 ### 2.2 RelativeLayout 相对布局
 
 当界面比较复杂的时候，需要嵌套多层的 LinearLayout,这样就会降低UI Render的效率(渲染速度),而且如果是listview或者GridView上的 item,效率会更低,另外太多层LinearLayout嵌套会占用更多的系统资源,还有可能引发stackoverflow（堆栈溢出）;
@@ -132,3 +144,32 @@ padding 则更不同，直接使用 padding 时，各方向按给的数值填充
 
 > 4. android:layout_column: 标示跳过某个格子，从1开始计数
 > 5. android:layout_span: 合并单元格
+
+## 2.4 FrameLayout 帧布局
+
+FrameLayout(帧布局)可以说是六大布局中最为简单的一个布局,这个布局直接在屏幕上开辟出一块空白的区域,当我们往里面添加控件的时候,会默认把他们放到这块区域的左上角,而这种布局方式却没有任何的定位方式,所以它应用的场景并不多;帧布局的大小由控件中最大的子控件决定,如果控件的大小一样大的话,那么同一时刻就只能看到最上面的那个组件!后续添加的控件会覆盖前一个!虽然默认会将控件放置在左上角,但是我们也可以通过layout_gravity属性,指定到其他的位置!本节除了给大家演示一个最简单的例子外,还给大家带了两个好玩的例子,有兴趣的可以看看!
+
+### 2.4.1 常用属性
+
+* android:foreground:* 设置改帧布局容器的前景图像
+* android:foregroundGravity: 设置前景图像的显示位置
+
+## 2.5 GridLayout 网格布局 （4.0+）
+
+GridLayout属性表
+
+> 1. 设置排列对齐： android:orentation="vertical(竖直，默认)" horizontal(水平)  
+                   android:layout_gravity="" center,left,right,buttom
+                   或者 buttom|leftz 或者 fill占满屏幕
+
+> 2. 设置几行几列： android:rowCount="4" 设置网格布局有4行  
+android:columnCount="4" 设置网格布局4列
+
+> 3. 设置组件所在的行列： （从0开始计算）  
+android:layout_row="1" 设置组件位于第二行
+android:layout_column="2" 设置该组件位于第三列
+
+> 4. 设置组件横跨行几列：
+android:layout_rowSpan="2" 纵向横跨2行
+android:layout_columnSpan="2" 横向横跨2列
+
