@@ -173,3 +173,24 @@ android:layout_column="2" 设置该组件位于第三列
 android:layout_rowSpan="2" 纵向横跨2行
 android:layout_columnSpan="2" 横向横跨2列
 
+## 2.6 TextView 文本框
+
+属性表：
+
+1. id：组件id
+2. layout_width: 组件布局宽度：wrap\_content,match\_parent(fill\_parent),00dp
+3. layout\_height: 组件高度
+4. gravity： 设置空间内容对齐方向
+5. text：设置文本内容，一般吧字符串写到string.xml,然后通过@String/xxx取得相应内容
+6. textColor: 设置字体颜色，一般写到colors.xml
+7. textStyle: 设置字体风格，三个可选值，normal，bold，italic
+8. textSize： 字体大小，单位一般用sp
+9. background：控件的背景色，可用图片。
+
+### 2.6.1 带阴影的TextView
+
+涉及属性：
+1. android:shadowColor: 设置阴影颜色，需要和shadowRadius一起使用，
+2. android:shadowRadius: 设置模糊程度，
+3. android:shadowDx:设置阴影在水平方向的偏移，水平方向的阴影开始的横坐标位置
+4. android:shadowDy: 设置阴影在竖直方向的偏移，就是竖直方向的偏移，就是阴影开始的纵坐标位置
