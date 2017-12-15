@@ -7,6 +7,7 @@
 使用linux安装了[宝塔面板](https://www.bt.cn/btcode.html)，以及一堆推荐服务。
 
 > linux 常用指令：
+> * 鼠标滑动选中目录名，右键鼠标就可以复制了。
 > 1. cd dirName 打开文件夹，cd .. 打开上级文件夹
 > 2. ls 查看当前文件夹内容
 > 3. rm 文件目录：删除对应文件目录；rm -rf 文件目录：删除对应文件目录的文件夹
@@ -14,6 +15,7 @@
 > 5. xz -d **.tar.xz ：解压xz后缀的压缩文件
 > 6. tar -xv -f **.tar : 解压tar后缀的压缩文件。
 > 7. ln -s /path\_to/bin/node /usr/local/bin/node : 建立软连接，使之可以全局运行，path\_to是实际文件夹路径
+> 8. echo ：打印某些东西，比如 echo $PATH 打印环境变量
 
 ## 遇到的坑：
 
@@ -47,3 +49,89 @@ ln: failed to create symbolic link '/tmp/mysql.sock': File exists
 ![安装及检测node是否成功](./1.png)
 
 看到打印出的版本号我泪牛满面。。。
+
+## 顺便安装 express
+
+有了经验就是好办事，先打印出node根目录方便右键复制，然后cd到全局，然后：
+```
+$ npm install express -gd // 全局安装express 
+$ npm install express-generator -g // 全局安装experss生成器
+$ ln -s /node/node-v8.9.3-linux-x64/bin/express /usr/local/bin/express // 建立全局软连接
+$ express --version // 查看是否安装成功
+```
+![express安装成功图](./2.png)
+
+## 依旧顺便开个服务器做测试
+
+情绪高涨的时候就要继续折腾！！
+
+接下来打开预先就打算做node目录的node文件夹，使用 express server_01 生成一个服务器模板，然后：
+
+```
+cd node                     // 打开工程目录
+express server_01           // 生成项目模板
+cd server_01 && npm install // 打开目录并安装依赖
+npm start                   // 开始运行程序
+```
+
+然后本机服务器访问 ***.**.**.**:3000 ,然后一脸懵逼，为啥404了？
+
+也许是服务器没有开放3000端口？
+
+查了很多服务器端口的资料，但却没有解决问题，突然想到现在已经安装了宝塔面板，宝塔帮忙安装了Nginx，是不是产生冲突了？另一方面可以用宝塔测试3000端口啊，于是，立刻使用一键建站生成了一个3000端口的php 站点，这时候当然express的默认端口就被占用了，实际外网访问服务器的3000端口是可以拿到站点信息的，然后删除刚测试用的站点，解除3000的占用，重新登录linux，运行node服务器，然后我又：
+
+**一脸懵逼**
+
+成功了，再次外网访问3000端口打印出express字样，会不会是宝塔建站帮我做了一些配置呢？
+主要这些配置如果没有宝塔我自己要怎么配置呢？
+
+求大佬解答。。。
+
+## 继续踩坑
+
+总算运行起来服务器了，宝塔生成一个ftp专门管理node服务器的文件，简单修改服务器添加了一个句 s b 的接口后跑起来，顺利的在本地机器上访问到接口，拿到了数据，然后，关掉PuTTY，然后
+
+**一脸懵逼**
+
+服务不能访问了？？
+
+百度谷歌后，发现我现在其实需要的是“后台运行我的node.js程序”，“守护进程”，这里再次真诚地感谢cnode社区。
+
+node.js 后台运行程序方法很多,应当按使用场合选择技术：
+
+> 1. supervisor :  开发环境使用，非常适合调试。
+> 2. forever    :  管理多个站点，每个站点访问量不大，不需要监控
+> 3. pm2        :  网站访问量比较大，需要完整的监控界面
+> 4. nohup      :  最简单的办法  nohup node app.js &
+
+这里选择了 [forever](https://github.com/foreverjs/forever) ，毕竟只是做些尝试。
+
+跟着教程 `npm install forever -g` ,安装完后发现：
+
+```
+forever --help
+-bash: forever: command not found
+```
+
+联想到之前 express 全局安装后也是手动安装的软连接，也许是某些配置没有配置好？PATH？
+
+再次使用 ln -s 生成软连接：
+```
+ln -s 你的node目录+/lib/node_modules/forever/bin/forever /usr/local/bin
+```
+
+之后就可以全局使用forever了。
+
+打开之前建立的server_01,执行
+```
+forever start ./bin/www // express模板跑服务器
+```
+
+然后关掉PuTTY也可以访问我们的服务了
+
+## 常用 forever 命令：
+
+> 1. forever start test.js|[pid]    // 后台开启服务。
+> 2. forever stop test.js|[pid]     // 停止后台服务。
+> 3. forever restart test.js|[pid]  // 重启后台服务。
+> 4. forever list test.js|[pid]     // 打印现有服务。
