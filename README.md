@@ -8,3 +8,5 @@
 3. *2017-11-25*: 简单做了一个[五十音图网页版](./Japanese_Phonogram_Fifty/index.html)（静态图，后续功能留坑）[笔记](./Japanese_Phonogram_Fifty/node.md)
 
 4. *2017-11-28*: [jsonp](./jsonp/jsonp_node.md) 的简单实现及原理剖析
+
+5. *2017-12-14*： 在linux服务器上配置node，express，forever[踩坑指北](./linux_node/learn_node.md)。 
