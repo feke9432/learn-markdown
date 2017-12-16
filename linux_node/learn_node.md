@@ -135,3 +135,58 @@ forever start ./bin/www // express模板跑服务器
 > 2. forever stop test.js|[pid]     // 停止后台服务。
 > 3. forever restart test.js|[pid]  // 重启后台服务。
 > 4. forever list test.js|[pid]     // 打印现有服务。
+
+## 继续折腾，安装mysql
+
+之前宝塔面板已经帮我们把mysql安装好了,然后我们自己安装node.js的mysql管理
+```
+npm install mysql
+```
+
+想要操作数据库先要有库可用，所以我们先用之前安装好的phpMyAdmin新建数据库，做测试所以名字用了**test**。
+
+
+![phpMyAdmin中新建数据库](./3.png)
+
+并且建立一张用户表，三个参数，id，user\_name，user\_password，并输入一条初始数据
+
+![建立用户表](./4.png)
+
+然后尝试在我们的node程序中调用数据库
+```
+var mysql = require('mysql'); // 引入
+
+var connection = mysql.createConnection({   // 配置链接信息
+    host: 'localhost',  // 数据库地址，一般在本地
+    user: '...',        // 用户名
+    password: '...',    // 密码
+    database: '...'     // 表名
+}); 
+/*
+    具体使用时建议封装逻辑，
+    先建立链接，query请求数据，
+    请求完毕后关闭链接。
+*/
+connection.connect();
+connection.query('SELECT * FROM user', (err, rows, fields) => {
+    if (err) throw err;
+    console.log(rows);
+});
+connection.end();
+```
+
+简单做一个测试接口看看能否获取数据库信息：
+```
+router.get('/getUser', (req, res, next) => {
+    var connection = mysql.createConnection(mysqlConfig);  // 注意每次查询数据库都需要重新生成链接对象。
+    connection.connect();
+    connection.query('SELECT * FROM user', (err, rows, fields) => {
+        if (err) throw err;
+        console.log(rows);
+        connection.end();
+        res.send(rows)
+    });
+})
+```
+浏览器访问你的服务器ip:3000/getUser,如果打印出之前输入的信息说明成功了。
+
