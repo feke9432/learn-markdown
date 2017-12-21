@@ -11,4 +11,6 @@
 
 5. *2017-12-14*： 在linux服务器上配置node，express，forever[踩坑指北](./linux_node/learn_node.md)。 
 
-6. *2017-12-21*: 使用js 实现几种简单的排序算法
+6. *2017-12-21*: 使用js 实现几种简单的[排序算法](./js_Sorting_algorithm/learn_node.md).
+
+7. *2017-12-21*: [固定linux服务器](./liunx_attack/learn_node.md)用户可访问ip防卫攻击

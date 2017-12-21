@@ -194,3 +194,5 @@ android:layout_columnSpan="2" 横向横跨2列
 2. android:shadowRadius: 设置模糊程度，
 3. android:shadowDx:设置阴影在水平方向的偏移，水平方向的阴影开始的横坐标位置
 4. android:shadowDy: 设置阴影在竖直方向的偏移，就是竖直方向的偏移，就是阴影开始的纵坐标位置
+
+## 2.7 

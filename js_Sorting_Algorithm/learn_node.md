@@ -56,7 +56,7 @@ InsertSort(arr);
 function InsertSort(arr) {
     var preIndex, current;
 
-    for(var i = 0, len = arr.length; i < len; i++) {
+    for (var i = 0, len = arr.length; i < len; i++) {
         preIndex = i - 1;
         current = arr[i];
         while(preIndex >= 0 && arr[preIndex] > current) {
