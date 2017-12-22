@@ -12,3 +12,9 @@ echo file_get_contents($html);
 然后总是报错，还输出到页面上，仔细看代码发现是重复输出的问题，去掉`echo file_get_contents($html);`这一句就好了。
 
 原来直接访问php文件就会执行php程序，但输出的内容是页面内最终留下的内容，比如上面 `require '1.php';` 就是把1.php的内容获取并执行到index.php里了，最后就会剩下这些内容，并且多次 echo 最后只会发一次内容字符。
+
+php同事也给出了另一种方法：本地跳转链接，也会执行php代码
+
+```
+header('location:1.php');
+```
