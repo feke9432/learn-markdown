@@ -16,7 +16,7 @@
 > 6. tar -xv -f **.tar : 解压tar后缀的压缩文件。
 > 7. ln -s /path\_to/bin/node /usr/local/bin/node : 建立软连接，使之可以全局运行，path\_to是实际文件夹路径
 > 8. echo ：打印某些东西，比如 echo $PATH 打印环境变量
-> 9. fing 表达式： 查找文件。
+> 9. find 文件路径： 查找文件。
 >> * -name ： 根据文件名查找
 >> * -iname : 根据文件名查找文件，忽略大小写
 >> * -path : 根据路径查找文件
@@ -26,6 +26,7 @@
 >> * -cmin <分钟> ：过去N分钟内修改过的文件
 >> * -ctime <天数> : 过去N天内修改过的文件
 >> * -anewer <参照文件> ： 比参照文件更晚被读取过的文件
+> 10. cat /etc/redhat-release ： 查看系统版本
 
 ## 遇到的坑：
 
@@ -200,3 +201,11 @@ router.get('/getUser', (req, res, next) => {
 ```
 浏览器访问你的服务器ip:3000/getUser,如果打印出之前输入的信息说明成功了。
 
+BIO_new_file("/www/server/nginx/conf/www.bt.cn.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/www/server/nginx/conf/www.bt.cn.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+nginx: configuration file /www/server/nginx/conf/nginx.conf test failed
+
+nginx: [emerg] BIO_new_file("/etc/nginx/ssl/nginx.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/ssl/nginx.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
+nginx: configuration file /www/server/nginx/conf/nginx.conf test failed
+
+ssl_certificate /etc/nginx/ssl/nginx.crt;
+ssl_certificate_key /etc/nginx/ssl/nginx.key;

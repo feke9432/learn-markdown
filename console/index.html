@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>console.log 测试</h1>
+    <p>主要使用了访问器属性</p>
+    <script>
+        console.log('少年，你要力量吗？（yes，no）');
+        g();
+        
+        function g() {
+            p('yes', function() {
+                return console.log('那就给你力量，啊哈哈哈哈'), "哈~美~哈~美~哈！！！！";
+            }),
+            p('no', function () {
+                return b('你确定不要', 1e3),
+                b('真的不要', 1500),
+                b('不要我走了', 2e3),
+                setTimeout(() => {
+                    window.close();
+                }, 3e3),"哈啊？"
+            });
+        }
+
+        function b (c,d) {
+            setTimeout(() => {
+                return console.log(c);
+            }, d)
+        }
+
+        function p (e,f) {
+            Object.defineProperty(window, e, {
+                get: f
+            });
+        }
+
+    </script>
+</body>
+</html>
