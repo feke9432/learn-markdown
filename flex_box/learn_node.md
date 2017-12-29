@@ -88,5 +88,5 @@ flex-flow: flex-diretion || flex-wrap;
 2. flex-grow   定义项目的放大比例，默认为0，即使存在剩余空间，也不放大。
 3. flex-shrink  定义项目的缩小比例，默认为1，即空间不足会缩小
 4. flex-basis    定义了分配多余空间之前，项目占据了主轴空间的大小
-5. flex 是上述4个属性的缩写
+5. flex 是上述3个属性的缩写
 6. align-self  规定单个项目与其他项目不一样的对齐方式，可覆盖align-items属性
