@@ -23,3 +23,5 @@
 10. *2017-12-25*: [console 和 访问器属性](./console/learn_node.md)
 
 11. *2017-12-26*: flex布局[学习](./flex_box/learn_node.md)
+
+12. *2017-12-31*: 字符编码[问题](./string_and_encoding/learn_node.md)
