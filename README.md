@@ -14,18 +14,18 @@
 
 6. *2017-12-14*: HTML DOM [接口复习](./HTML_DOM/learn_node.md).
 
-6. *2017-12-18*: 建立一个[github博客](./github_page/learn_node.md)
+7. *2017-12-18*: 建立一个[github博客](./github_page/learn_node.md)
 
-6. *2017-12-21*: 使用js 实现几种简单的[排序算法](./js_Sorting_algorithm/learn_node.md)
+8. *2017-12-21*: 使用js 实现几种简单的[排序算法](./js_Sorting_algorithm/learn_node.md)
 
-7. *2017-12-21*: [固定linux服务器](./liunx_attack/learn_node.md)
+9. *2017-12-21*: [固定linux服务器](./liunx_attack/learn_node.md)
 
-8. *2017-12-22*：[记一次php解决问题](./php_node/learn_node.md)
+10. *2017-12-22*：[记一次php解决问题](./php_node/learn_node.md)
 
-9. *2017-12-23*: [操作dom--scrollTop值](./DOM_scrollTop/learn_node.md)
+11. *2017-12-23*: [操作dom--scrollTop值](./DOM_scrollTop/learn_node.md)
 
-10. *2017-12-25*: [console 和 访问器属性](./console/learn_node.md)
+12. *2017-12-25*: [console 和 访问器属性](./console/learn_node.md)
 
-11. *2017-12-26*: flex布局[学习](./flex_box/learn_node.md)
+13. *2017-12-26*: flex布局[学习](./flex_box/learn_node.md)
 
-12. *2017-12-31*: 字符编码[问题](./string_and_encoding/learn_node.md)
+14. *2017-12-31*: 字符编码[问题](./string_and_encoding/learn_node.md)
