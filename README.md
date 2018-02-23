@@ -29,3 +29,6 @@
 13. *2017-12-26*: flex布局[学习](./flex_box/learn_node.md)
 
 14. *2017-12-31*: 字符编码[问题](./string_and_encoding/learn_node.md)
+
+15. *2018-1-3*： 各个浏览器点击返回按钮跳转指定[页面](./back_jump/index.html)
+

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>返回跳页</title>
+    <style>
+        body,html {
+            height: 100%;
+            width: 100%;
+        }
+        a {
+            text-decoration: none;
+        }
+        .tanBox {
+            display: none;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .tanBox .shadow {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        .tanBox .tankuang {
+            box-sizing: border-box;
+            width: 80%;
+            max-width: 300px;
+            background: white;
+            border-radius: 12px;
+            padding: 0 24px;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .tanBox .tankuang h2 {
+            margin: 0;
+            padding: 12px 0;
+            text-align: center;
+        }
+        .tanBox .btnGroup {
+            display: flex;
+            display: -webkit-flex;
+            width: 100%;
+            position: relative;
+            justify-content: space-around;
+        }
+        .tanBox .btnGroup .btn {
+            padding: 12px 8px;
+        }
+        .tanBox .msg {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>返回跳页</h1>
+
+    <p>思路：监测用户返回按钮事件，跳页处理=> 失败，浏览器提供返回按钮的监听事件不能卡住页面，使用location操作跳转失败。</p>
+
+    <p>思路二：浏览器提供了pushState方法往history里增加url链接，并提供popstate事件监听history栈里弹出url</p>
+
+    <code>
+        window.addEventListener("popstate", function(e) { 
+            alert("我监听到了浏览器的返回按钮事件啦");//根据自己的需求实现自己的功能 
+        }, false);
+    </code>
+
+    <p>但页面还是会跳转，这个alert并没有卡主页面，所以我们使用pushState增加一个本也得url，让浏览器返回本页</p>
+
+    <div class="tanBox" id="tanBox">
+        <div class="shadow"></div>
+        <div class="tankuang" id="tankuang">
+            <h2>来自马云的提示</h2>
+            <p class="msg">既然进来了，就别想走！</p>
+            <div class="btnGroup">
+                <a class="btn" id="closeBtn">我知道了</a>
+                <a href="weixin://" class="btn">去微信</a>
+            </div>
+        </div>
+    </div>
+    
+
+    <script>
+        window.onload = function () {
+            /*
+             * 使用 h5 新方法向历史记录列表推入本页，使返回实际是返回我们自己推入的记录。
+            */
+            pushHistory();
+            var takuang = document.getElementById('tanBox');
+            window.addEventListener("popstate", function (e) {
+                takuang.style = 'display: block;';
+                pushHistory();
+            }, false); 
+
+            function pushHistory() {
+                var state = {
+                    title: "title",
+                    url: "#"
+                };
+                window.history.pushState(state, "title", "#");
+            }
+            // 关闭弹窗事件。
+            var closeBtn = document.getElementById('closeBtn');
+            closeBtn.addEventListener('click', function () {
+                takuang.style = 'display: none;'
+            }, false);
+
+            /*
+             * 实际不起作用，浏览器直接刷新了页面。没有执行相关代码。
+             * 使用 return false 语句也阻止不了默认事件。
+            */
+            // window.addEventListener("beforeunload", function () {
+            //     window.location.href = 'http://www.baidu.com'
+            //     console.log('ss');
+            //     alert('ss')
+            //     takuang.style = 'display: block;';
+            //     return false;
+            // });
+            /**
+             * 微信内beforeunload 不兼容，使用 visibilitychange 实际不起作用
+            */
+            // document.addEventListener('visibilitychange', function () {
+            //     if (document.visibilityState == 'hidden') {
+            //         alert('ss')
+            //         takuang.style = 'display: block;';
+            //     }
+            // });
+        }
+    </script>
+</body>
+</html>

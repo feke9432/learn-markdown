@@ -19,7 +19,7 @@
 最后在 path 变量值得最前面添加：`%JAVA_HOME%\bin;%JAVA_HOME%\jre\bin;`
 
 之后就可以 ctrl + r 打开 cmd 输入 javac ，如果打印出下面的图就就说明成功了：
-![](./cmd.png)
+![](./android_learn_node/cmd.png)
 
 之后在 android studio 官网下载最新版软件，跟着点，在是否加入 path 的选项上加 √ ，之后一马平川的安装就好。
 
@@ -32,7 +32,7 @@ app > res > layout > active_main.xml(或者其他名字，这里暂时只有一�
 
 删除旧内容后选择竖排布局 `<LinearLayout></LinearLayout>`,熟悉的标签式布局，用各种属性调整页面布局，文件最上方的标签`<?xml version="1.0" encoding="utf-8"?>`，这个我一眼就看出来是声明版本号，声明文档格式为‘utf-8’，然后按照教程老老实实一步一步布局下来，大体成型后添加按钮点击事件`android:onClick="onClick"`,又是熟悉的语法,之后到  
 app > java > com.anddle.你的项目名 > MainActivity
-![](./onclick.png)
+![](./android_learn_node/onclick.png)
 中添加事件，在类 MainActivity 中添加公用返回值为空的事件 onClick ,传入一个参数（View view）,这里以以后的参数注意 Alt + Enter 引入引用，onClick 函数教程中采用了 switch case 判断用户点击的按钮的 id 的方式执行事件。这里遇到一个愚蠢的问题，之前遇到不管点哪个按钮都弹出错误的提示，判断是 switch 直接执行最后一个事件，然后发现没有给 case 里的语句块添加 break; 弹出的过。。。
 
 然后 debug 编译打包后我第一个很傻的应用就完成了，大部分代码都是照着抄，但毕竟有前端的底子，xml 语法看起来让人联想很多。之后进入具体的基础学习阶段。
@@ -52,7 +52,7 @@ app > java > com.anddle.你的项目名 > MainActivity
 ### 2.1 LinearLayout 线性布局
 
 线性布局比较适合屏幕适配，用的比较多的属性就是 weight （权重属性：此属性安卓会自己计算视图块的大小），其他属性见下图：
-![](./LinearLayout.jpg)
+![](./android_learn_node/LinearLayout.jpg)
 
 常用属性表：
 1. orentation: 布局中组件的排列方式，horizontal（水平）vertical(竖直，默认)
@@ -70,10 +70,10 @@ weight (权重) 属性详解：
 
 当界面比较复杂的时候，需要嵌套多层的 LinearLayout,这样就会降低UI Render的效率(渲染速度),而且如果是listview或者GridView上的 item,效率会更低,另外太多层LinearLayout嵌套会占用更多的系统资源,还有可能引发stackoverflow（堆栈溢出）;
 所以：**尽量使用RelativeLayout + LinearLayout的weight属性搭配使用吧**
-![](./RelativeLayout.png)
+![](./android_learn_node/RelativeLayout.png)
 
 #### 2.2.1 父容器定位属性示意图
-![](./RLParentBox.jpg)
+![](./android_learn_node/RLParentBox.jpg)
 
 ### 2.2.2 兄弟组件定位
 

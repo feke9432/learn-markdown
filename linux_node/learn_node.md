@@ -4,7 +4,7 @@
 
 安装[PuTTY](http://www.putty.org/),输入服务器唯一物理ip后，登录到服务器，
 
-使用linux安装了[宝塔面板](https://www.bt.cn/btcode.html)，以及一堆推荐服务。
+使用linux安装了[宝塔面板](https://www.bt.cn/btcode.html)（点击查看宝塔常用linux指令），以及一堆推荐服务。
 
 > linux 常用指令：
 > * 鼠标滑动选中目录名，右键鼠标就可以复制了。
@@ -199,13 +199,4 @@ router.get('/getUser', (req, res, next) => {
     });
 })
 ```
-浏览器访问你的服务器ip:3000/getUser,如果打印出之前输入的信息说明成功了。
-
-BIO_new_file("/www/server/nginx/conf/www.bt.cn.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/www/server/nginx/conf/www.bt.cn.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
-nginx: configuration file /www/server/nginx/conf/nginx.conf test failed
-
-nginx: [emerg] BIO_new_file("/etc/nginx/ssl/nginx.crt") failed (SSL: error:02001002:system library:fopen:No such file or directory:fopen('/etc/nginx/ssl/nginx.crt','r') error:2006D080:BIO routines:BIO_new_file:no such file)
-nginx: configuration file /www/server/nginx/conf/nginx.conf test failed
-
-ssl_certificate /etc/nginx/ssl/nginx.crt;
-ssl_certificate_key /etc/nginx/ssl/nginx.key;
+浏览器访问服务器ip:3000/getUser,成功打印出信息(:。
